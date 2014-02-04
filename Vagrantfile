@@ -6,8 +6,11 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise32"
-  config.vm.provision "puppet"
   config.vm.network :forwarded_port, host:4567, guest:80
+
+  config.vm.provision "puppet" do |puppet|
+    puppet.module_path = "modules"
+  end
 
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
