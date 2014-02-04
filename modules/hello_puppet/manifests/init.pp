@@ -1,5 +1,7 @@
 class hello_puppet {
 
+	$www_dir = "/var/www"
+
 	exec { "apt-get update":
 		path => "/usr/bin",
 	}
@@ -14,16 +16,16 @@ class hello_puppet {
 		require => Package["apache2"],
 	}
 
-	file { "/var/www/hello-puppet":
+	file { "${www_dir}/hello-puppet":
 		ensure	=> directory,
 		mode	=> 0644,
 		require => Package["apache2"],
 		notify	=> Service["apache2"],
 	}
 
-	file {'facts.txt':
+	file {"facts.txt":
 			ensure	=> file,
-			path		=> '/var/www/hello-puppet/facts.txt',
+			path		=> "${www_dir}/hello-puppet/facts.txt",
 			content => "This Learning Puppet VM's IP address is ${ipaddress}. It thinks its
 hostname is ${fqdn}, but you might not be able to reach it there
 from your host machine. It is running ${operatingsystem} ${operatingsystemrelease} and
