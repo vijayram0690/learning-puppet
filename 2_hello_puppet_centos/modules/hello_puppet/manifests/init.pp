@@ -18,6 +18,14 @@ class hello_puppet {
 		notify	=> Service["httpd"],
 	}
 
+	mount { 'mount ephemeral':
+		name	=> "/ephemeral",
+		ensure	=> mounted,
+		device	=> "/dev/xvdb",
+		fstype	=> "ext3",
+		notify	=> Service["httpd"]
+	}
+
 	file {"facts.txt":
 			ensure	=> file,
 			path		=> "${www_dir}/hello-puppet/facts.txt",
