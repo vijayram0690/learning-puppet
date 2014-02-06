@@ -11,6 +11,5 @@ class ephemeral {
 		ensure	=> mounted,
 		device	=> "/dev/xvdb",
 		fstype	=> "ext3",
-		notify	=> Service["httpd"]
 	}
 }
