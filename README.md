@@ -1,4 +1,4 @@
 learning-puppet
 ===============
 
-Hello world puppet manifests- New Commit
+Hello world puppet manifests- Second Commit
